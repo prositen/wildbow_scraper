@@ -8,7 +8,7 @@ function scrape {
 	rm ${1}.html
 }
 
-while getopts ":ahtw" opt; do
+while getopts ":ahgptw" opt; do
 	case $opt in
 		w) scrape "worm"
 		   exit 
@@ -16,16 +16,20 @@ while getopts ":ahtw" opt; do
 		t) scrape "twig"
 		   exit
 		;;
+		g) scrape "glowworm"
+		   exit
+		;;
 		p) scrape "pact"
 		   exit
 		;;
-		a) scrape "worm"
+		a) scrape "glowworm"
+		   scrape "worm"
 		   scrape "pact"
 		   scrape "twig"
 		   exit
 		;;
 
-		h) echo "options are: -a for all, -h for help, -p for pact, -t for twig, -w for worm" 
+		h) echo "options are: -a for all, -h for help, -p for pact, -t for twig, -w for worm -g for glowworm/ward" 
 		exit 1
 		;;
 	esac
